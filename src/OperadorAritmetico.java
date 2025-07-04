@@ -15,14 +15,15 @@ public class OperadorAritmetico {
         System.out.println("4. division");
         System.out.println("Ingrese una opcion");
         number3 = sc.nextInt();
-        if(number3 == 1){
-            System.out.println("La suma es: " +(number1 + number2));
+
+        if (number3 == 1) {
+            System.out.println("La suma es: " + (number1 + number2));
         } else if (number3 == 2) {
-            System.out.println("La resta es: " +(number1 - number2));
+            System.out.println("La resta es: " + (number1 - number2));
         } else if (number3 == 3) {
-            System.out.println("La multiplicacion es: " +(number1 * number2));
+            System.out.println("La multiplicacion es: " + (number1 * number2));
         } else if (number3 == 4) {
-            System.out.println("La division es: " +(number1 / number2));
+            System.out.println("La division es: " + ((float) number1 / (float) number2));
         } else {
             System.out.println("Vuelva a intentarlo nuevamente");
         }
