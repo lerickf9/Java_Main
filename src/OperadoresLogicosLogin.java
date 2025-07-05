@@ -5,6 +5,7 @@ public class OperadoresLogicosLogin {
         Scanner sc = new Scanner(System.in);
         String[] username = new String[3];
         String[] password =new String[3];
+        //Otra forma de iniciar String[] username = { "Erick", "Joudy", "Admin"}
         String cuenta, cont;
         boolean isAutenticado =  false;
 
