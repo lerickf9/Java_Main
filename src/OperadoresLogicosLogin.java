@@ -21,10 +21,11 @@ public class OperadoresLogicosLogin {
         System.out.println("Ingrese su password: ");
         cont = sc.nextLine();
         for (int i = 0; i < username.length; i ++){
-            if(username[i].equals(cuenta) && password[i].equals(cont)){
-                isAutenticado = true;
-                break;
-            }
+            isAutenticado = (username[i].equals(cuenta) && password[i].equals(cont))? true: isAutenticado;
+            //if(username[i].equals(cuenta) && password[i].equals(cont)){
+             //   isAutenticado = true;
+             //   break;
+            //}
         }
 
         if(isAutenticado){
