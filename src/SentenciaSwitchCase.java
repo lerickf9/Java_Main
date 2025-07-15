@@ -5,6 +5,7 @@ public class SentenciaSwitchCase {
         //Aplicamos desde un menu de almuerzo la sentencia de swithCase y aplicamos if y ternario para
         //Aplicar lo aprendido.
         Scanner sc = new Scanner(System.in);
+        String resp;
         float suma = 0;
         int opcion = 0, multiplo = 0, propina = 0;
         System.out.println("*******MENU DEL DIA*******");
@@ -15,7 +16,7 @@ public class SentenciaSwitchCase {
         System.out.println("Ingrese la opcion que desea: ");
         opcion = sc.nextInt();
 
-        switch (opcion){
+        switch (opcion) {
 
             case 1:
                 System.out.println("Cuantos completos desea? ");
@@ -37,17 +38,14 @@ public class SentenciaSwitchCase {
             default:
                 System.out.println("Gracias por visitarnos!");
         }
-        if(suma>0){
+        if (suma > 0) {
             System.out.println("Su pedido total es de: " + suma);
             System.out.println("Desea sumar la propina? responde 1 =\"si\" o 2 =\"no\"");
             propina = sc.nextInt();
-            if(propina == 1){
-                System.out.println("Total a pagar es: " + (suma * 1.1));
-            }else {
-                System.out.println("Total a pagar es: " + suma);
-            }
+            resp = propina == 1 ? "El total a pagar es: " + (suma * 1.2) : "El total a pagar es: " + suma;
+            System.out.println(resp);
         }
-
-
     }
+
 }
+
