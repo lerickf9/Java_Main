@@ -1,8 +1,5 @@
 import javax.swing.*;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class TareaMenu {
     public static void main(String[] args) {
@@ -14,6 +11,7 @@ public class TareaMenu {
         */
         Scanner sc = new Scanner(System.in);
         int opcionIndice = 0;
+        ArrayList<String> nomProducto = new ArrayList<>();
         /*
          los Map (o mapas) los veremos mas adelante en el curso en profundidad
          pero son como un arreglo asociativo, asocia un nombre (o indice) a un valor
@@ -53,14 +51,26 @@ public class TareaMenu {
                         System.out.println(mensaje);
                         break;
                     case 3:
-                        mensaje = "Usuario agregado correctamente";
-                        JOptionPane.showMessageDialog(null, mensaje);
-                        System.out.println(mensaje);
+                        String nom = JOptionPane.showInputDialog("Ingrese el nombre del producto: ");
+                        if (nom != null && !nom.trim().isEmpty() && !nomProducto.contains(nom)) {
+                            System.out.println("Nombre ingresado: " + nom);
+                            mensaje = "Usuario agregado correctamente";
+                            JOptionPane.showMessageDialog(null, mensaje);
+                            System.out.println(mensaje);
+                            nomProducto.add(nom);
+
+                        } else {
+                            mensaje = "No se ingresó ningún nombre.";
+                            JOptionPane.showMessageDialog(null, mensaje);
+                        }
                         break;
                     case 4:
                         mensaje = "Listando a los usuarios";
                         JOptionPane.showMessageDialog(null, mensaje);
                         System.out.println(mensaje);
+                        for(int i=0; i< nomProducto.size(); i++){
+                            System.out.println(nomProducto.get(i) + " - ");
+                        }
                         break;
                 }
 
