@@ -41,36 +41,68 @@ public class TareaMenu {
 
                 switch (opcionIndice) {
                     case 1:
-                        mensaje = "Usuario actualizado correctamente";
-                        JOptionPane.showMessageDialog(null, mensaje);
-                        System.out.println(mensaje);
+                        StringBuilder cadena = new StringBuilder();
+                        int contador=1;
+                        for (String elemento : nomProducto) {
+                            cadena.append(contador).append(".- ").append(elemento).append("\n");
+                            contador++;
+                        }
+                        JOptionPane.showInternalMessageDialog(null, cadena.toString(), "Contenido de productos...", JOptionPane.INFORMATION_MESSAGE);
+                        try{
+                            int index = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero del producto que quiere actualizar: "));
+                            index = (index-1);
+                            nomProducto.remove(index);
+                            String nom = JOptionPane.showInputDialog("Ingrese el nombre del producto actualizado: ").toLowerCase();
+                            nomProducto.add(index, nom);
+                            mensaje = "Usuario actualizado correctamente";
+                            JOptionPane.showMessageDialog(null, mensaje);
+                            System.out.println(mensaje);
+                        }catch (NumberFormatException exception){
+                            JOptionPane.showMessageDialog(null,"Ingrese un formato de numero correcto!.");
+                        }
                         break;
                     case 2:
-                        mensaje = "Usuario eliminado correctamente";
-                        JOptionPane.showMessageDialog(null, mensaje);
-                        System.out.println(mensaje);
+                        cadena = new StringBuilder();
+                        contador=1;
+                        for (String elemento : nomProducto) {
+                            cadena.append(contador).append(".- ").append(elemento).append("\n");
+                            contador++;
+                        }
+                        JOptionPane.showInternalMessageDialog(null, cadena.toString(), "Contenido de productos...", JOptionPane.INFORMATION_MESSAGE);
+                        try{
+                            int index = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero del producto: "));
+                            index = (index-1);
+                            nomProducto.remove(index);
+                            mensaje = "Usuario eliminado correctamente";
+                            JOptionPane.showMessageDialog(null, mensaje);
+                            System.out.println(mensaje);
+                        }catch (NumberFormatException exception){
+                            JOptionPane.showMessageDialog(null,"Ingrese un formato de numero correcto!.");
+                        }
                         break;
                     case 3:
-                        String nom = JOptionPane.showInputDialog("Ingrese el nombre del producto: ");
-                        if (nom != null && !nom.trim().isEmpty() && !nomProducto.contains(nom)) {
+                        String nom = JOptionPane.showInputDialog("Ingrese el nombre del producto: ").toLowerCase();
+                        if (!nom.trim().isEmpty() && !nomProducto.contains(nom.toLowerCase())) {
                             System.out.println("Nombre ingresado: " + nom);
                             mensaje = "Usuario agregado correctamente";
                             JOptionPane.showMessageDialog(null, mensaje);
                             System.out.println(mensaje);
                             nomProducto.add(nom);
-
                         } else {
-                            mensaje = "No se ingresó ningún nombre.";
+                            mensaje = "No se ingresó ningún nombre. Intente nuevamente...";
                             JOptionPane.showMessageDialog(null, mensaje);
                         }
                         break;
                     case 4:
-                        mensaje = "Listando a los usuarios";
-                        JOptionPane.showMessageDialog(null, mensaje);
-                        System.out.println(mensaje);
-                        for(int i=0; i< nomProducto.size(); i++){
-                            System.out.println(nomProducto.get(i) + " - ");
+                        cadena = new StringBuilder();
+                        contador=1;
+                        for (String elemento : nomProducto) {
+                            cadena.append(contador).append(".- ").append(elemento).append("\n");
+                            contador++;
                         }
+                        mensaje = "Listando a los usuarios...";
+                        JOptionPane.showMessageDialog(null, mensaje);
+                        JOptionPane.showInternalMessageDialog(null, cadena.toString(), "Contenido de productos...", JOptionPane.INFORMATION_MESSAGE);
                         break;
                 }
 
