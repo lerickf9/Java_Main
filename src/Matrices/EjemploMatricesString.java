@@ -1,6 +1,6 @@
 package Matrices;
 
-public class EjemploMAtricesString {
+public class EjemploMatricesString {
     public static void main(String[] args) {
 
         String[][] nombres = new String[3][2];
