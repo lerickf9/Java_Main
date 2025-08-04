@@ -8,6 +8,30 @@ public class Automovil {
     private double cilindrada;
     private int capacidadEstanque = 40;
 
+    //Sobrecarga de metodo para instanciar una clase Automovil sin parametros en la clase main
+    public Automovil() {
+    }
+
+    public Automovil(String fabricante, String modelo){
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+    }
+
+    public Automovil(String fabricante, String modelo, String color, double cilindrada) {
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+        this.color = color;
+        this.cilindrada = cilindrada;
+    }
+
+    public Automovil(String fabricante, String modelo, String color, double cilindrada, int capacidadEstanque) {
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+        this.color = color;
+        this.cilindrada = cilindrada;
+        this.capacidadEstanque = capacidadEstanque;
+    }
+
     public String verDetalle(){
         return  "auto.fabricante = " + this.fabricante +
                 "\nauto.modelo = " + this.modelo +
@@ -76,4 +100,10 @@ public class Automovil {
         return km/(capacidadEstanque * (porcentajeBencina/100f));
     }
 
+    //Sobreescritura del metodo padre
+    @Override
+    public boolean equals(Object obj) {
+        Automovil a = (Automovil) obj;
+        return (this.fabricante.equals(a.leerFabricante()) && this.modelo.equals(a.leerModelo()));
+    }
 }
