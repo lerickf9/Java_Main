@@ -2,11 +2,11 @@ package POO;
 
 public class Automovil {
 
-    String fabricante;
-    String modelo;
-    String color = "gris";
-    double cilindrada;
-    int capacidadEstanque = 40;
+    private String fabricante;
+    private String modelo;
+    private String color = "gris";
+    private double cilindrada;
+    private int capacidadEstanque = 40;
 
     public String verDetalle(){
         return  "auto.fabricante = " + this.fabricante +
@@ -14,6 +14,42 @@ public class Automovil {
                 "\nauto.color = " + this.color +
                 "\nauto.cilindrada = " + this.cilindrada;
 
+    }
+
+    public String leerFabricante(){
+        return fabricante;
+    }
+    public void asignarFrabricante(String fabricante){
+        this.fabricante = fabricante;
+    }
+
+    public String leerModelo(){
+        return modelo;
+    }
+    public void asignarModelo(String modelo){
+        this.modelo = modelo;
+    }
+
+    public String leerColor(){
+        return color;
+    }
+    public void asignarColor(String color){
+        this.color = color;
+    }
+
+    public double leerCilindrada(){
+        return cilindrada;
+    }
+    public void asignarCilindrada(double cilindrada){
+        this.cilindrada = cilindrada;
+    }
+
+    public int leerCapacidadEstanque(){
+        return capacidadEstanque;
+    }
+
+    public void asignarMCapacidadEstanque(int capacidadEstanque){
+        this.capacidadEstanque = capacidadEstanque;
     }
 
     public String acelerar (int rpm){
