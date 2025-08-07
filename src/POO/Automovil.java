@@ -2,29 +2,55 @@ package POO;
 
 public class Automovil {
 
+    private int id;
     private String fabricante;
     private String modelo;
-    private String color = "gris";
+    private Color color = Color.GRIS;
     private double cilindrada;
     private int capacidadEstanque = 40;
+    private static int ultimoid;
+
+    private TipoAutomovil tipo;
+
+    public static final Integer VELOCIDAD_MAX_CARRETERA = 120;
+    public static final int VELOCIDAD_MAX_CIUDAD = 60;
+
+    public static final String COLOR_ROJO = "Rojo";
+    public static final String COLOR_AMARILLO = "Amarillo";
+    public static final String COLOR_AZUL = "Azul";
+    public static final String COLOR_BLANCO = "Blanco";
+    public static final String COLOR_GRIS = "Gris Oscuro";
+
+
+    private static Color colorPatente = Color.NARANJO;
 
     //Sobrecarga de metodo para instanciar una clase Automovil sin parametros en la clase main
     public Automovil() {
+        this.id = ++ultimoid;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Automovil(String fabricante, String modelo){
+        this();
         this.fabricante = fabricante;
         this.modelo = modelo;
     }
 
-    public Automovil(String fabricante, String modelo, String color, double cilindrada) {
+    public Automovil(String fabricante, String modelo, Color color, double cilindrada) {
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.color = color;
         this.cilindrada = cilindrada;
     }
 
-    public Automovil(String fabricante, String modelo, String color, double cilindrada, int capacidadEstanque) {
+    public Automovil(String fabricante, String modelo, Color color, double cilindrada, int capacidadEstanque) {
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.color = color;
@@ -32,10 +58,20 @@ public class Automovil {
         this.capacidadEstanque = capacidadEstanque;
     }
 
+    public static Color getColorPatente(){
+        return colorPatente;
+    }
+    public static void setColorPatente(Color colorPatente){
+        Automovil.colorPatente = colorPatente;
+    }
+
     public String verDetalle(){
-        return  "auto.fabricante = " + this.fabricante +
+        return  "auto.id = " + this.id +
+                "\nauto.fabricante = " + this.fabricante +
                 "\nauto.modelo = " + this.modelo +
-                "\nauto.color = " + this.color +
+                "\nauto.tipo = " + this.getTipo().getDescripcion() +
+                "\nauto.color = " + this.color.getColor() +
+                "\nauto.patenteColor = " + Automovil.colorPatente.getColor() +
                 "\nauto.cilindrada = " + this.cilindrada;
 
     }
@@ -54,10 +90,10 @@ public class Automovil {
         this.modelo = modelo;
     }
 
-    public String leerColor(){
+    public Color leerColor(){
         return color;
     }
-    public void asignarColor(String color){
+    public void asignarColor(Color color){
         this.color = color;
     }
 
@@ -100,10 +136,34 @@ public class Automovil {
         return km/(capacidadEstanque * (porcentajeBencina/100f));
     }
 
-    //Sobreescritura del metodo padre
+    //Sobreescritura del metodo padre. Este metodo funciona cuando estan creados los objetos. Sino produce un error
+    //NullPointerException por eso hay que validar siempre.
+    //Se valida con instaOf para ser exclusivo la comparacion con el mismo tipo de Objeto.
     @Override
     public boolean equals(Object obj) {
+
+        if(this == obj){
+            return true;
+        }
+        if(!(obj instanceof Automovil)){
+            return false;
+        }
         Automovil a = (Automovil) obj;
-        return (this.fabricante.equals(a.leerFabricante()) && this.modelo.equals(a.leerModelo()));
+        return (this.fabricante != null && this.modelo !=null
+                && this.fabricante.equals(a.leerFabricante())
+                && this.modelo.equals(a.leerModelo()));
+    }
+
+    public TipoAutomovil getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoAutomovil tipo) {
+        this.tipo = tipo;
+    }
+
+    @Override
+    public String toString() {
+        return this.id + " "+ fabricante + " " + modelo + '\'' ;
     }
 }
