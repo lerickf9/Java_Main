@@ -6,8 +6,11 @@ public class Automovil {
     private String fabricante;
     private String modelo;
     private Color color = Color.GRIS;
-    private double cilindrada;
-    private int capacidadEstanque = 40;
+    private Motor motor;
+    private Estanque estanque;
+    private Persona conductor;
+    private Rueda[] ruedas;
+
     private static int ultimoid;
 
     private TipoAutomovil tipo;
@@ -21,6 +24,32 @@ public class Automovil {
     public static final String COLOR_BLANCO = "Blanco";
     public static final String COLOR_GRIS = "Gris Oscuro";
 
+
+    public Automovil(String fabricante, String modelo){
+        this();
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+    }
+
+    public Automovil(String fabricante, String modelo, Color color, Motor motor) {
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+        this.color = color;
+        this.motor = motor;
+    }
+
+    public Automovil(String fabricante, String modelo, Color color, Motor motor, Estanque estanque) {
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+        this.color = color;
+        this.motor = motor;
+        this.estanque = estanque;
+    }
+    public Automovil(String fabricante, String modelo, Color color, Motor motor, Estanque estanque, Persona conductor, Rueda[] ruedas) {
+        this(fabricante, modelo, color, motor, estanque);
+        this.conductor = conductor;
+        this.ruedas = ruedas;
+    }
 
     private static Color colorPatente = Color.NARANJO;
 
@@ -37,26 +66,6 @@ public class Automovil {
         this.id = id;
     }
 
-    public Automovil(String fabricante, String modelo){
-        this();
-        this.fabricante = fabricante;
-        this.modelo = modelo;
-    }
-
-    public Automovil(String fabricante, String modelo, Color color, double cilindrada) {
-        this.fabricante = fabricante;
-        this.modelo = modelo;
-        this.color = color;
-        this.cilindrada = cilindrada;
-    }
-
-    public Automovil(String fabricante, String modelo, Color color, double cilindrada, int capacidadEstanque) {
-        this.fabricante = fabricante;
-        this.modelo = modelo;
-        this.color = color;
-        this.cilindrada = cilindrada;
-        this.capacidadEstanque = capacidadEstanque;
-    }
 
     public static Color getColorPatente(){
         return colorPatente;
@@ -69,10 +78,10 @@ public class Automovil {
         return  "auto.id = " + this.id +
                 "\nauto.fabricante = " + this.fabricante +
                 "\nauto.modelo = " + this.modelo +
-                "\nauto.tipo = " + this.getTipo().getDescripcion() +
+                "\nauto.tipo = " + this.getTipo() +
                 "\nauto.color = " + this.color.getColor() +
                 "\nauto.patenteColor = " + Automovil.colorPatente.getColor() +
-                "\nauto.cilindrada = " + this.cilindrada;
+                "\nauto.cilindrada = " + this.motor.getCilindrada();
 
     }
 
@@ -97,20 +106,6 @@ public class Automovil {
         this.color = color;
     }
 
-    public double leerCilindrada(){
-        return cilindrada;
-    }
-    public void asignarCilindrada(double cilindrada){
-        this.cilindrada = cilindrada;
-    }
-
-    public int leerCapacidadEstanque(){
-        return capacidadEstanque;
-    }
-
-    public void asignarMCapacidadEstanque(int capacidadEstanque){
-        this.capacidadEstanque = capacidadEstanque;
-    }
 
     public String acelerar (int rpm){
         return "el auto " + this.fabricante + " acelerando a " + rpm + " rpm";
@@ -128,12 +123,44 @@ public class Automovil {
     }
 
     public float calcularConsumo(int km, float porcentajeBencina){
-        return km/(capacidadEstanque * porcentajeBencina);
+        return km/(this.estanque.getCapacidad() * porcentajeBencina);
     }
 
     //Sobrecarga de metodo
     public float calcularConsumo(int km, int porcentajeBencina){
-        return km/(capacidadEstanque * (porcentajeBencina/100f));
+        return km/(this.estanque.getCapacidad() * (porcentajeBencina/100f));
+    }
+
+    public Motor getMotor() {
+        return motor;
+    }
+
+    public void setMotor(Motor motor) {
+        this.motor = motor;
+    }
+
+    public Estanque getEstanque() {
+        return estanque;
+    }
+
+    public void setEstanque(Estanque estanque) {
+        this.estanque = estanque;
+    }
+
+    public Persona getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(Persona conductor) {
+        this.conductor = conductor;
+    }
+
+    public Rueda[] getRuedas() {
+        return ruedas;
+    }
+
+    public void setRuedas(Rueda[] ruedas) {
+        this.ruedas = ruedas;
     }
 
     //Sobreescritura del metodo padre. Este metodo funciona cuando estan creados los objetos. Sino produce un error

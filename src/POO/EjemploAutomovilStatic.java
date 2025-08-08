@@ -7,20 +7,23 @@ public class EjemploAutomovilStatic {
 
         Automovil subaru = new Automovil("Subaru", "Impreza");
 
-        subaru.asignarCilindrada(2.0);
+        subaru.setMotor(new Motor(2.0, TipoMotor.BENCINA));
+        subaru.setMotor(new Motor(2.0, TipoMotor.BENCINA));
         subaru.asignarColor(Color.BLANCO);
         subaru.setTipo(TipoAutomovil.HATCHBACK);
 
         System.out.println("Velocidad maxima carretera: " + Automovil.VELOCIDAD_MAX_CARRETERA);
         System.out.println("Velocidad maxima ciudad" + Automovil.VELOCIDAD_MAX_CIUDAD);
 
-        Automovil mazda = new Automovil("Mazda", "BT-50", Color.ROJO, 3.0d);
+        Automovil mazda = new Automovil("Mazda", "BT-50", Color.ROJO, new Motor(3.0, TipoMotor.DIESEL));
 
         System.out.println("mazda.fabricante: " + mazda.leerFabricante());
 
-        Automovil nissan = new Automovil("Nissan", "Navara", Color.GRIS, 3.5, 50);
+        Automovil nissan = new Automovil("Nissan", "Navara", Color.GRIS,
+                new Motor(4.0, TipoMotor.DIESEL), new Estanque(50));
 
-        Automovil nissan2 = new Automovil("Nissan", "Navara", Color.GRIS, 3.5, 50);
+        Automovil nissan2 = new Automovil("Nissan", "Navara", Color.GRIS,
+                new Motor(3.5, TipoMotor.BENCINA), new Estanque(50));
 
         Automovil.setColorPatente(Color.AZUL);
         nissan.setTipo(TipoAutomovil.PICKUP);
