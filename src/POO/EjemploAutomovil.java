@@ -8,12 +8,12 @@ public class EjemploAutomovil {
 
         subaru.setMotor(motorSubaru);
         subaru.setEstanque(new Estanque());
-        subaru.asignarColor(Color.BLANCO);
+        subaru.setColor(Color.BLANCO);
 
         Motor motorMazda = new Motor(3.0, TipoMotor.DIESEL);
         Automovil mazda = new Automovil("Mazda", "BT-50", Color.ROJO, motorMazda);
         mazda.setEstanque(new Estanque(45));
-        System.out.println("mazda.fabricante: " + mazda.leerFabricante());
+        System.out.println("mazda.fabricante: " + mazda.getFabricante());
 
         Automovil nissan = new Automovil("Nissan", "Navara", Color.GRIS,
                 new Motor(4.0, TipoMotor.DIESEL), new Estanque(50));
@@ -36,5 +36,7 @@ public class EjemploAutomovil {
         System.out.println("Kilometros por litros " + subaru.calcularConsumo(300, 0.75f));
         //Encapsulamiento
         System.out.println("Kilometros por litros " + subaru.calcularConsumo(300, 75));
+
+
     }
 }

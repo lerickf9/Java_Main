@@ -9,15 +9,17 @@ public class EjemploAutomovilStatic {
 
         subaru.setMotor(new Motor(2.0, TipoMotor.BENCINA));
         subaru.setMotor(new Motor(2.0, TipoMotor.BENCINA));
-        subaru.asignarColor(Color.BLANCO);
+        subaru.setColor(Color.BLANCO);
         subaru.setTipo(TipoAutomovil.HATCHBACK);
 
         System.out.println("Velocidad maxima carretera: " + Automovil.VELOCIDAD_MAX_CARRETERA);
         System.out.println("Velocidad maxima ciudad" + Automovil.VELOCIDAD_MAX_CIUDAD);
 
-        Automovil mazda = new Automovil("Mazda", "BT-50", Color.ROJO, new Motor(3.0, TipoMotor.DIESEL));
-
-        System.out.println("mazda.fabricante: " + mazda.leerFabricante());
+        Automovil mazda = new Automovil("Mazda", "BT-50", Color.ROJO,
+                new Motor(3.0, TipoMotor.DIESEL));
+        mazda.setTipo(TipoAutomovil.PICKUP);
+        //mazda.setEstanque(new Estanque());
+        System.out.println("mazda.fabricante: " + mazda.getFabricante());
 
         Automovil nissan = new Automovil("Nissan", "Navara", Color.GRIS,
                 new Motor(4.0, TipoMotor.DIESEL), new Estanque(50));
@@ -42,6 +44,8 @@ public class EjemploAutomovilStatic {
 
         nissan.verDetalle();
         nissan2.verDetalle();
+
+        System.out.println(mazda.calcularConsumo(300, 70));
 
     }
 }
